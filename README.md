@@ -250,6 +250,24 @@ The Drive folder also contains intermediate and final outputs generated during m
 
 _Note:_ The GitHub repository provides the source code, notebooks, and project documentation. Google Drive hosts the larger datasets, trained model artifacts, generated images, feature files, and experimental results to facilitate access and reproducibility.
 
+# SMILES-to-Image Conversion: Demo
+
+Polymer SMILES representations were converted into 2D molecular structure images using RDKit. This step provides a visual representation of the polymer repeat units and helps inspect the generated molecular structures.
+
+Example Generated Polymer Structures
+
+The following examples demonstrate the SMILES-to-image conversion pipeline.
+
+| Example | Generated structure |
+|---|---|
+| Polymer 1 | ![Polymer 1](Demo/SMILES_to_Images/polymer_000025.png) |
+| Polymer 2 | ![Polymer 2](Demo/SMILES_to_Images/polymer_000030.png) |
+| Polymer 3 | ![Polymer 3](Demo/SMILES_to_Images/polymer_0000035.png) |	
+
+Note: Replace these example filenames with actual generated image filenames from the project.
+
+The complete set of generated polymer images is stored separately because of its large size. A small representative sample is included in this repository for demonstration.
+
 
 ## 8. Prediction Disagreement and Uncertainty Analysis
 
