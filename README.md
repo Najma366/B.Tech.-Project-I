@@ -7,13 +7,10 @@ The workflow includes converting polymer SMILES representations into 2D molecula
 
 In addition, multiple molecular feature representations are generated from polymer structures, including molecular fingerprints, molecular descriptors, graph-based features, and functional group representations.
 
-These features are used to train individual XGBoost regression models for predicting six polymer properties: 
-1. Heat capacity (Cp)
-2. Atomization Energy (Eat)
-3. Young's modulus (YM)
-4. Elongation at break (epsb)
-5. Tensile strength (TSy)
-6. Tensile strength at break (TSb)
+These features are used to train individual XGBoost regression models for predicting three mechanical polymer properties: 
+1. Young's modulus (YM)
+2. Tensile strength (TSy)
+3. Tensile strength at break (TSb)
 
 The predictions from these individual experts are then combined using two ensemble approaches:
 
@@ -178,9 +175,6 @@ The following table presents the R² scores obtained on the respective test sets
 
 | Property|Fingerprints|Descriptors|Graph|Functional Groups|MoE (ExtraTrees)|RidgeStack
 |---------|------------|-----------|-----|-----------------|----------------|----------|
-|Cp|0.8676|0.6515|0.3986|0.3914|0.8801|0.8788|
-|Eat|0.8830|0.7006|0.4262|0.4294|0.8930|0.8917|
-|epsb|0.7285|0.5691|0.4738|0.2066|0.7548|0.7503|
 |TSy|0.7921|0.5884|0.4424|0.2845|0.8062|0.8045|
 |TSb|0.8416|0.6916|0.5970|0.3764|0.8521|0.8501|
 |YM|0.7990|0.5639|0.4434|0.1965|0.8140|0.8103|
@@ -205,9 +199,6 @@ The ensemble models were further evaluated using R², RMSE and MAE.
 
 |Property|MoE R²|MoE RMSE|MoE MAE|RidgeStack R²|RidgeStack RMSE|RidgeStack MAE|
 |--------|-----|---------|-------|------------|---------------|--------------|
-|Cp|0.8801|0.03889|0.02895|0.8788|0.03912|0.02922|
-|Eat|0.8930|0.04763|0.03547|0.8917|0.04792|0.03578|
-|epsb|0.7548|6.31052|3.36704|0.7503|6.36822|3.41937|
 |TSy|0.8062|5.18220|3.91430|0.8045|5.20504|3.93173|
 |TSb|0.8521|6.64089|4.97103|0.8501|6.68596|5.00181|
 |YM|0.8140 |154.14788|114.46079|0.8103|155.68049|115.54821|
@@ -310,9 +301,6 @@ The following results were obtained:
 
 |Property|MoE Pearson r|RidgeStack Pearson r|
 |--------|-------------|---------------------|
-|Cp|0.1751|0.1917|
-|Eat|0.1654|0.1791|
-|epsb|0.5242|0.5347|
 |TSy|0.1342|0.1483|
 |TSb|0.1585|0.1721|
 |YM|0.2096|0.2288|
@@ -321,17 +309,13 @@ The following results were obtained:
 
 The results indicate that the relationship between expert disagreement and prediction error varies across polymer properties.
 
-- epsb exhibits the strongest positive correlation, suggesting that higher expert disagreement tends to be associated with larger prediction errors.
-
-- Cp, Eat, TSy, TSb and YM exhibit relatively weak positive correlations.
+- TSy, TSb and YM exhibit relatively weak positive correlations.
 
 - RidgeStack consistently shows slightly higher disagreement-error correlations than the ExtraTrees-based ensemble.
 
 - The relatively weak correlations for most properties indicate that expert disagreement alone cannot fully explain prediction errors.
 
 An important observation is that predictive performance and the usefulness of expert disagreement as an uncertainty indicator are two different aspects of model evaluation.
-
-For example, the Eat experiment achieves an R² of approximately 0.893, but exhibits a weak disagreement-error correlation. In contrast, epsb achieves a lower R² of approximately 0.755 while showing a considerably stronger positive correlation.
 
 This suggests that expert disagreement may provide more useful information about prediction errors for certain polymer properties than for others.
 
@@ -341,9 +325,6 @@ The following statistics summarize the disagreement distribution across the test
 
 |Property|Mean Di|Median Di|95th Percentile Di|
 |--------|-------|---------|------------------|
-|Cp|0.040242|0.033334|0.094716|
-|Eat|0.051785|0.042706|0.121496|
-|EPSB|3.741236|2.738976|9.860247|
 |TSy|4.178687|3.693381|8.598482|
 |TSb|5.707923|5.006536|12.059233|
 |YM|130.497541|111.325993|288.892673|
@@ -370,20 +351,14 @@ An example organization is:
 Polymer-Property-Prediction/
 │
 ├── Property Codes/
-│   ├── Cp.ipynb
-|   ├── Eat.ipynb
 │   ├── YM.ipynb
 │   ├── TSy.ipynb
 │   ├── TSb.ipynb
-│   └── epsb.ipynb
 │
 ├── Results/
-│   ├── Cp
-|   ├── Eat
 |   ├── Tsb
 |   ├── Tsy
 |   ├── YM
-|   └── epsb
 │
 ├── Feature Extraction Code
 │
@@ -458,7 +433,7 @@ Four independent XGBoost experts are trained using molecular fingerprints, molec
 
 Their predictions are subsequently combined using an ExtraTrees-based nonlinear stacking model and RidgeStack.
 
-The framework is evaluated across six polymer properties: Cp, Eat, YM, epsb, Tsy and Tsb.
+The framework is evaluated across six polymer properties: YM, Tsy and Tsb.
 
 The comparison between individual experts and ensemble approaches provides a basis for understanding the contribution of different molecular representations and prediction-combination strategies to polymer property prediction.
 
