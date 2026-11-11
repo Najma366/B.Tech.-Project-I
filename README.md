@@ -1,4 +1,7 @@
-# Polymer Property Prediction Using Multi-Expert Machine Learning, MoE and RidgeStack
+# Vision-Based Polymer Structure Recognition and Multi-Property Prediction using Advanced AI models
+
+## Polymer Property Prediction Using Multi-Expert Machine Learning, MoE and RidgeStack
+
 ## 1. Project Overview
 
 This project focuses on developing a computational framework for polymer representation, molecular feature generation, and machine learning-based prediction of polymer properties.
@@ -217,7 +220,7 @@ The Google Drive repository contains the following:
 
 **1. Trained Models and Evaluation Results**
 
-For each target property (Cp, Eat, YM, epsb, TSy and TSb), the corresponding results folder contains:
+For each target property (YM, TSy and TSb), the corresponding results folder contains:
 
 - **Models:** Trained individual expert models and ensemble models.
 - **Predictions:** Test-set predictions from individual experts and combined models.
@@ -309,11 +312,11 @@ The following results were obtained:
 
 The results indicate that the relationship between expert disagreement and prediction error varies across polymer properties.
 
-- TSy, TSb and YM exhibit relatively weak positive correlations.
+- TSy, TSb and YM exhibit weak positive correlations.
 
 - RidgeStack consistently shows slightly higher disagreement-error correlations than the ExtraTrees-based ensemble.
 
-- The relatively weak correlations for most properties indicate that expert disagreement alone cannot fully explain prediction errors.
+- The relatively weak correlations for properties indicate that expert disagreement alone cannot fully explain prediction errors.
 
 An important observation is that predictive performance and the usefulness of expert disagreement as an uncertainty indicator are two different aspects of model evaluation.
 
