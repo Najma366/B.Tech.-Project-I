@@ -262,7 +262,7 @@ The following examples demonstrate the SMILES-to-image conversion pipeline.
 |---|---|
 | Polymer 1 | ![Polymer 1](Demo/SMILES_to_Images/polymer_000025.png) |
 | Polymer 2 | ![Polymer 2](Demo/SMILES_to_Images/polymer_000030.png) |
-| Polymer 3 | ![Polymer 3](Demo/SMILES_to_Images/polymer_0000035.png) |	
+| Polymer 3 | ![Polymer 3](Demo/SMILES_to_Images/polymer_0000034.png) |	
 
 Note: Replace these example filenames with actual generated image filenames from the project.
 
