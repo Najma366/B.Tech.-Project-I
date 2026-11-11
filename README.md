@@ -194,7 +194,6 @@ The following table presents the R² scores obtained on the respective test sets
 
 - The performance improvement from ensemble learning was relatively modest, indicating that the fingerprint expert already captures substantial predictive information.
 
-The largest improvement over the fingerprint expert was observed for EPSB.
 
 **7.3 Ensemble Model Performance**
 
